@@ -3,8 +3,8 @@
     "name" : "Project G - Server side"
   },
   "dev" : {
-    "port" : 3001,
-    "db_host" : "mongodb_host",
+    "port" : 80,
+    "db_host" : "your_db",
     "wikiURL" : "https://gbf.wiki"
   }
 }
