@@ -1,0 +1,16 @@
+{
+  "apiClient": {
+    "consumerKey": "yourConsumerKey",
+    "consumerSecretKey": "yourConsumerSecretKey",
+    "accessToken": "yourAccessToken",
+    "accessTokenSecret": "yourAccessTokenSecret"
+  },
+  "streamParameters" : {
+    "en": {
+      "track": "battle ID I need backup!"
+    },
+    "jp": {
+      "track": ":参戦ID"
+    }
+  }
+}

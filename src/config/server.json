@@ -1,0 +1,10 @@
+{
+  "app":{
+    "name" : "Project G - Server side"
+  },
+  "dev" : {
+    "port" : 3001,
+    "db_host" : "mongodb_host",
+    "wikiURL" : "https://gbf.wiki"
+  }
+}
