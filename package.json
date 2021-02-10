@@ -4,8 +4,8 @@
   "private": "true",
   "main": "build/app.js",
   "scripts": {
-    "start:dev": "nodemon",
-    "start": "npm run build && node build/app.js",
+    "start": "node build/app.js",
+    "start:dev": "npm run build && node build/app.js",
     "build": "rimraf ./build && tsc",
     "eslint": "eslint src/** --fix"
   },
@@ -33,6 +33,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
+    "npm": "^7.5.3",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
