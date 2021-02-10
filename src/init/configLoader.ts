@@ -6,4 +6,5 @@ const CONFIG = {
     SERVER,
     RAIDS,
 };
+
 export default CONFIG;
