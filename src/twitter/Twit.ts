@@ -4,10 +4,10 @@ import { Stream } from 'twitter-lite/dist';
 
 class Twit {
     private client = new Twitter({
-        consumer_key: CONFIG.TWITTER.apiClient.consumerKey,
-        consumer_secret: CONFIG.TWITTER.apiClient.consumerSecretKey,
-        access_token_key: CONFIG.TWITTER.apiClient.accessToken,
-        access_token_secret: CONFIG.TWITTER.apiClient.accessTokenSecret,
+        consumer_key: String(process.env.GBFUAPP_TWITTER_CONSUMER_KEY),
+        consumer_secret: String(process.env.GBFUAPP_TWITTER_CONSUMER_KEY_SECRET),
+        access_token_key: String(process.env.GBFUAPP_ACCESS_TOKEN),
+        access_token_secret: String(process.env.GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET),
     });
 
     public getRaidStream(): Stream {

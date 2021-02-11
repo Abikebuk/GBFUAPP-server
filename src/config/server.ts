@@ -4,7 +4,6 @@ const SERVER = {
     },
     dev: {
         port: 8080,
-        db_host: process.env.GBFUAPP_DATABASE_HOST,
         wikiURL: 'https://gbf.wiki',
     },
 };

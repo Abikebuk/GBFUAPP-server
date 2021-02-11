@@ -1,9 +1,9 @@
 const TWITTER = {
     apiClient: {
-        consumerKey: process.env.GBFUAPP_TWITTER_CONSUMER_KEY,
-        consumerSecretKey: process.env.GBFUAPP_TWITTER_CONSUMER_KEY_SECRET,
-        accessToken: process.env.GBFUAPP_ACCESS_TOKEN,
-        accessTokenSecret: process.env.GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET,
+        consumerKey: String(process.env.GBFUAPP_TWITTER_CONSUMER_KEY),
+        consumerSecretKey: String(process.env.GBFUAPP_TWITTER_CONSUMER_KEY_SECRET),
+        accessToken: String(process.env.GBFUAPP_ACCESS_TOKEN),
+        accessTokenSecret: String(process.env.GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET),
     },
     streamParameters: {
         en: {

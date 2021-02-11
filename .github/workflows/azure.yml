@@ -33,8 +33,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: create config.env
+    - name: load environment variables into .env
       run: |
+        # Create config.env
         echo 'GBFUAPP_ACCESS_TOKEN=${{ secrets.GBFUAPP_ACCESS_TOKEN }}' >> config.env
         echo 'GBFUAPP_DATABASE_HOST=${{ secrets.GBFUAPP_DATABASE_HOST }}' >> config.env
         echo 'GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET=${{ secrets.GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET }}' >> config.env
