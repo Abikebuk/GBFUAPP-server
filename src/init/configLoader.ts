@@ -1,6 +1,6 @@
 import TWITTER from '../config/twitter';
-import SERVER from '../config/server';
 import RAIDS from '../config/raids.json';
+import SERVER from '../config/server';
 const CONFIG = {
     TWITTER,
     SERVER,
