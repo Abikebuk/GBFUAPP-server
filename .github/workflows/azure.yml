@@ -36,11 +36,11 @@ jobs:
     - name: load environment variables into .env
       run: |
         # Create config.env
-        echo 'GBFUAPP_ACCESS_TOKEN=${{ secrets.GBFUAPP_ACCESS_TOKEN }}' >> config.env
-        echo 'GBFUAPP_DATABASE_HOST=${{ secrets.GBFUAPP_DATABASE_HOST }}' >> config.env
-        echo 'GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET=${{ secrets.GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET }}' >> config.env
-        echo 'GBFUAPP_TWITTER_CONSUMER_KEY=${{ secrets.GBFUAPP_TWITTER_CONSUMER_KEY }}' >> config.env
-        echo 'GBFUAPP_TWITTER_CONSUMER_KEY_SECRET=${{ secrets.GBFUAPP_TWITTER_CONSUMER_KEY_SECRET }}' >> config.env
+        echo 'GBFUAPP_ACCESS_TOKEN=${{ secrets.GBFUAPP_ACCESS_TOKEN }}' >> .env
+        echo 'GBFUAPP_DATABASE_HOST=${{ secrets.GBFUAPP_DATABASE_HOST }}' >> .env
+        echo 'GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET=${{ secrets.GBFUAPP_TWITTER_ACCESS_TOKEN_SECRET }}' >> .env
+        echo 'GBFUAPP_TWITTER_CONSUMER_KEY=${{ secrets.GBFUAPP_TWITTER_CONSUMER_KEY }}' >> .env
+        echo 'GBFUAPP_TWITTER_CONSUMER_KEY_SECRET=${{ secrets.GBFUAPP_TWITTER_CONSUMER_KEY_SECRET }}' >> .env
     - name: npm install, build, and test
       run: |
         # Build and test the project, then
