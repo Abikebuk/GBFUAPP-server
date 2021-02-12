@@ -12,15 +12,17 @@ function raids(app: Express, route: string, stream: Readable): number {
             'access-control-allow-origin': '*',
         });
         stream.on('data', (data) => {
-            counter++;
             console.log(counter);
-            if (counter < 50) {
-                res.write(data);
-            } else {
-                console.log('end of counter =', counter);
-                counter = 0;
-                res.end('');
-            }
+            try {
+                if (counter < 50) {
+                    counter++;
+                    res.write(data);
+                } else {
+                    console.log('end of counter =', counter);
+                    counter = 0;
+                    res.end('');
+                }
+            } catch (e) {}
         });
     });
     return 0;
