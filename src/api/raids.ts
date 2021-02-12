@@ -19,8 +19,8 @@ function raids(app: Express, route: string, stream: Readable): number {
                     res.write(data);
                 } else {
                     console.log('end of counter =', counter);
-                    counter = 0;
                     res.end('');
+                    counter = 0;
                 }
             } catch (e) {}
         });
