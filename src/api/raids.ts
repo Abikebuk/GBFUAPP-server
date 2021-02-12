@@ -13,8 +13,8 @@ function raids(app: Express, route: string, stream: Readable): number {
         });
         console.log(res.getHeaders());
         stream.on('data', (data) => {
+            counter++;
             if (counter < 50) {
-                counter++;
                 res.write(data);
             } else {
                 counter = 0;
