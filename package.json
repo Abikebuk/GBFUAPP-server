@@ -4,8 +4,8 @@
   "private": "true",
   "main": "build/app.js",
   "scripts": {
-    "start": "node build/app.js",
-    "start:dev": "npm run build && node build/app.js",
+    "start": "node build/index.js",
+    "start:dev": "npm run build && node build/index.js",
     "build": "rimraf ./build && tsc",
     "eslint": "eslint src/** --fix"
   },

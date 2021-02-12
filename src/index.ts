@@ -7,7 +7,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const port = CONFIG.SERVER.dev.port;
-const app = express();
-app.use(cors());
+const index = express();
+index.use(cors());
 
-appStart(app, port);
+appStart(index, port);
