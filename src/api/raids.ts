@@ -20,7 +20,6 @@ function raids(app: Express, route: string, stream: Readable): number {
                 } else {
                     console.log('end of counter =', counter);
                     res.end('');
-                    counter = 0;
                 }
             } catch (e) {}
         });
