@@ -11,8 +11,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 // Expressjs initialization
-const index = express();
-index.use(cors());
+const app = express();
+app.use(cors());
 
 // Start the api
-appStart(index);
+appStart(app);

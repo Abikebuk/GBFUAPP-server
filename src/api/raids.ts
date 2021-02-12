@@ -14,20 +14,24 @@ let i = 0;
 function raids(app: Express, route: string, stream: Readable): number {
     app.get(route, (req, res) => {
         i++;
+        const j = i;
         res.header({
             'content-type': 'application/json; charset=utf-8',
             'access-control-allow-origin': '*',
+            Connection: 'close',
         });
+        res.setTimeout(5000);
         let counter = 0;
         stream.on('data', (data) => {
-            console.log(counter);
             if (counter < 50) {
+                //TODO : Check never closing connection
+                //console.log(`${j} : ${counter}`);
                 counter++;
                 res.write(data);
             } else {
-                console.log(i, ' end of counter =', counter);
-                res.end();
-                return;
+                //console.log(j, ' end of counter =', counter);
+                res.end('end');
+                res.connection?.destroy();
             }
         });
     });
