@@ -5,8 +5,12 @@ let counter = 0;
 
 function raids(app: Express, route: string, stream: Readable): number {
     app.get(route, (req, res) => {
-        res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        //res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        //res.setHeader('Access-Control-Allow-Origin', '*');
+        res.header({
+            'content-type': 'application/json; charset=utf-8',
+            'access-control-allow-origin': '*',
+        });
         stream.on('data', (data) => {
             if (counter < 50) {
                 counter++;
