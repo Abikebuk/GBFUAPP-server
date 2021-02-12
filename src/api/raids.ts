@@ -10,8 +10,10 @@ import { Readable } from 'stream';
  * @param route
  * @param stream
  */
+let i = 0;
 function raids(app: Express, route: string, stream: Readable): number {
     app.get(route, (req, res) => {
+        i++;
         res.header({
             'content-type': 'application/json; charset=utf-8',
             'access-control-allow-origin': '*',
@@ -19,16 +21,14 @@ function raids(app: Express, route: string, stream: Readable): number {
         let counter = 0;
         stream.on('data', (data) => {
             console.log(counter);
-            try {
-                if (counter < 50) {
-                    counter++;
-                    res.write(data);
-                } else {
-                    console.log('end of counter =', counter);
-                    res.end();
-                    return;
-                }
-            } catch (e) {}
+            if (counter < 50) {
+                counter++;
+                res.write(data);
+            } else {
+                console.log(i, ' end of counter =', counter);
+                res.end();
+                return;
+            }
         });
     });
     return 0;
