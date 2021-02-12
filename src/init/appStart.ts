@@ -11,9 +11,10 @@ import listen from '../api/listen';
 import raids from '../api/raids';
 import raidsData from '../api/raidsData';
 
-async function appStart(app: Express, port: number): Promise<number> {
+async function appStart(app: Express): Promise<number> {
     // Twitter & MongoDB database connection initialization
     const twit = new Twit();
+    // eslint-disable-next-line no-unused-vars
     const db = connect();
     const raidList = await new RaidList();
     console.log(await raidList.get());
@@ -23,7 +24,7 @@ async function appStart(app: Express, port: number): Promise<number> {
     raidsData(app, '/raidsData');
     root(app, '/');
     // Listen
-    listen(app, port);
+    listen(app, Number(process.env.GBFUAPP_PORT));
     return 0;
 }
 

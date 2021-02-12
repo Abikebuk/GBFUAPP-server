@@ -1,4 +1,3 @@
-import { Connection } from 'mongoose';
 import { Express } from 'express';
 import MongoRaid from '../mongoose/model/MongoRaid';
 function raidsData(app: Express, route: string): void {

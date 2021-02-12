@@ -3,7 +3,6 @@ const SERVER = {
         name: 'Project G - Server side',
     },
     dev: {
-        port: 80,
         wikiURL: 'https://gbf.wiki',
     },
 };
