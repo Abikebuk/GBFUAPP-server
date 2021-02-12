@@ -11,7 +11,6 @@ function raids(app: Express, route: string, stream: Readable): number {
             'content-type': 'application/json; charset=utf-8',
             'access-control-allow-origin': '*',
         });
-        console.log(res.getHeaders());
         stream.on('data', (data) => {
             counter++;
             console.log(counter);
