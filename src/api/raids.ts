@@ -9,8 +9,8 @@ function raids(app: Express, route: string, stream: Readable): number {
             'content-type': 'application/json; charset=utf-8',
             'access-control-allow-origin': '*',
         });
+        let counter = 0;
         stream.on('data', (data) => {
-            let counter = 0;
             console.log(counter);
             try {
                 if (counter < 50) {
