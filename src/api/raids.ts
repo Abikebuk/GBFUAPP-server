@@ -1,8 +1,6 @@
 import { Express } from 'express';
 import { Readable } from 'stream';
 
-let counter = 0;
-
 function raids(app: Express, route: string, stream: Readable): number {
     app.get(route, (req, res) => {
         //res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -12,6 +10,7 @@ function raids(app: Express, route: string, stream: Readable): number {
             'access-control-allow-origin': '*',
         });
         stream.on('data', (data) => {
+            let counter = 0;
             console.log(counter);
             try {
                 if (counter < 50) {
