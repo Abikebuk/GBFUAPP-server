@@ -1,3 +1,7 @@
+/**
+ * RaidList.ts
+ * Manage the list of raids and its data.
+ */
 import MongoRaid from './model/MongoRaid';
 import { Document } from 'mongoose';
 import Raid from '../model/Raid';
@@ -6,16 +10,37 @@ import parseTweetDeck from '../scrapper/parseTweetDeck';
 import TweetDeck from '../model/TweetDeck';
 import CONFIG from '../init/configLoader';
 
+/**
+ * Type R
+ * Raid data type.
+ */
 type R = { nameEN: string; nameJA: string; level: number };
+
+/**
+ * Class RaidList
+ * Create and manage a list of Raid with its data
+ */
 class RaidList {
+    /**
+     * List of raid
+     */
     list: R[];
+    /**
+     * checks list is initialized
+     */
     initialized: boolean;
 
+    /**
+     * Constructor
+     */
     constructor() {
         this.list = [];
         this.initialized = false;
     }
 
+    /**
+     * Initialize the connection with the database and load its data
+     */
     public async init(): Promise<void> {
         await MongoRaid.find()
             .exec()
@@ -26,6 +51,12 @@ class RaidList {
             });
         this.initialized = true;
     }
+
+    /**
+     * push a Document into the list
+     * @param raid, raid data from the database
+     * @private
+     */
     private async pushDoc(raid: Document) {
         this.list.push({
             nameEN: raid.get('nameEN'),
@@ -34,6 +65,9 @@ class RaidList {
         });
     }
 
+    /**
+     * return the list and initialize it if not already initialized.
+     */
     public async get(): Promise<R[]> {
         if (!this.initialized) await this.init();
         return this.list;
@@ -118,6 +152,11 @@ class RaidList {
         return 1;
     }
 
+    /**
+     * checks if a Raid exist in the list
+     * @param raid
+     * @private
+     */
     private exist(raid: Raid): boolean {
         let levelChecked = false;
         let raidExist = false;
@@ -127,7 +166,7 @@ class RaidList {
         if (raid.level == -999) levelChecked = true;
         while (!raidExist && i < this.list.length) {
             const r = this.list[i];
-            if (this.compareName(raid, r) && (levelChecked || this.compareLevel(raid, r))) {
+            if (RaidList.compareName(raid, r) && (levelChecked || RaidList.compareLevel(raid, r))) {
                 raidExist = true;
             }
             i++;
@@ -147,14 +186,26 @@ class RaidList {
         return false;
     }
 
-    private compareName(raid: Raid, r: R) {
+    /**
+     * Compare if names of a Raid and a "R" (raid type) are the same
+     * @param raid
+     * @param r
+     * @private
+     */
+    private static compareName(raid: Raid, r: R) {
         const rName = raid.name;
         const lNameEN = r.nameEN;
         const lNameJA = r.nameJA;
         return rName == lNameEN || rName == lNameJA;
     }
 
-    private compareLevel(raid: Raid, r: R) {
+    /**
+     * Compare if level of a Raid and a "R" (raid type) are the same
+     * @param raid
+     * @param r
+     * @private
+     */
+    private static compareLevel(raid: Raid, r: R) {
         return raid.level == r.level;
     }
 }

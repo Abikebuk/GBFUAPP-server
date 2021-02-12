@@ -1,3 +1,7 @@
+/**
+ * ParseTweetDeck.ts
+ * In charge of parsing a page and find a TweetDeck (contains Twitter name of EN and JA raid)
+ */
 import TweetDeck from '../model/TweetDeck';
 import axios from 'axios';
 import cheerio from 'cheerio';

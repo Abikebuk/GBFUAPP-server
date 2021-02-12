@@ -1,3 +1,7 @@
+/**
+ * ParseText.ts
+ * In charge of parsing twitter's stream
+ */
 import Raid from '../model/Raid';
 
 const regJA = '(.*)?([0-9A-Za-z]{8}) :参戦ID\n' + '参加者募集！\n' + '(Lv([0-9]{2,3}) )?(.*)';

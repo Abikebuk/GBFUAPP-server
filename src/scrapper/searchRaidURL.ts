@@ -1,7 +1,15 @@
+/**
+ * searchRaidURL.ts
+ * Search URL of a raid in the wiki
+ */
 import CONFIG from '../init/configLoader';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
+/**
+ * Search url of a raid in the wiki
+ * @param query
+ */
 async function searchRaidURL(query: string): Promise<string | null> {
     let q = query.trim().replace(/ /g, '_');
     // TODO: Exception handling function
@@ -18,6 +26,10 @@ async function searchRaidURL(query: string): Promise<string | null> {
     return url;
 }
 
+/**
+ * Check if url exists
+ * @param url
+ */
 async function checkUrl(url: string): Promise<string | null> {
     url = encodeURI(url);
     try {
@@ -28,6 +40,10 @@ async function checkUrl(url: string): Promise<string | null> {
     return url;
 }
 
+/**
+ * Use the search function of the wiki and returns the url first result (if it exists)
+ * @param query
+ */
 async function searchRaid(query: string): Promise<string | null> {
     const q = query.trim().replace(' ', '+');
     const url = encodeURI(`${CONFIG.SERVER.dev.wikiURL}/?search=${q}`);

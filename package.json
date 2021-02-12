@@ -1,6 +1,6 @@
 {
-  "name": "project-g-server",
-  "version": "1.0.0",
+  "name": "gbfuapp-server",
+  "version": "0.1.0",
   "private": "true",
   "main": "build/app.js",
   "scripts": {

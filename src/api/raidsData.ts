@@ -1,5 +1,14 @@
+/**
+ * RaidsData.ts
+ */
 import { Express } from 'express';
 import MongoRaid from '../mongoose/model/MongoRaid';
+
+/**
+ * send the a RaidList
+ * @param app
+ * @param route
+ */
 function raidsData(app: Express, route: string): void {
     let data: Document[] = [];
     MongoRaid.find((callback, list) => {

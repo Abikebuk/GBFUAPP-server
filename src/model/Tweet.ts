@@ -1,8 +1,7 @@
 /**
- * Tweet type
+ * Tweet Model
  * Complete structure of Twitter's tweet response.
  */
-
 type Tweet = {
     // Example left in comment.
     created_at: string; // 'Sat Jan 09 10:19:26 +0000 2021';

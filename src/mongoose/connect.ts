@@ -1,6 +1,13 @@
+/**
+ * connect.ts
+ * Connects to the MongoDB Database.
+ */
 import { Connection } from 'mongoose';
 import mongoose from 'mongoose';
 
+/**
+ * connect to the MongoDB database.
+ */
 function connect(): Connection {
     mongoose
         .connect(String(process.env.GBFUAPP_DATABASE_HOST), { useNewUrlParser: true, useUnifiedTopology: true })
