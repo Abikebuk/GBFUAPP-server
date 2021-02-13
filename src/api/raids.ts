@@ -31,7 +31,6 @@ function raids(app: Express, route: string, stream: Readable): number {
             } else {
                 //console.log(j, ' end of counter =', counter);
                 res.end('end');
-                res.connection?.destroy();
             }
         });
     });
