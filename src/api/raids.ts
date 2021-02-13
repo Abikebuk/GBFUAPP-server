@@ -10,29 +10,25 @@ import { Readable } from 'stream';
  * @param route
  * @param stream
  */
-let i = 0;
+const i = 0;
 function raids(app: Express, route: string, stream: Readable): number {
     app.get(route, (req, res) => {
-        i++;
-        const j = i;
         res.header({
             'content-type': 'application/json; charset=utf-8',
             'access-control-allow-origin': '*',
             Connection: 'close',
         });
         res.setTimeout(5000);
-        let counter = 0;
-        stream.on('data', (data) => {
-            if (counter < 50) {
+        const counter = 0;
+        stream
+            .on('data', (data) => {
                 //TODO : Check never closing connection
-                //console.log(`${j} : ${counter}`);
-                counter++;
                 res.write(data);
-            } else {
-                //console.log(j, ' end of counter =', counter);
-                res.end('end');
-            }
-        });
+            })
+            .on('close', () => {
+                console.log('client closed');
+                res.end();
+            });
     });
     return 0;
 }
