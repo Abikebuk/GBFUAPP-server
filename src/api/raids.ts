@@ -19,10 +19,10 @@ function raids(app: Express, route: string, stream: Readable): number {
             Connection: 'close',
         });
         res.setTimeout(5000);
-        const counter = 0;
         stream
             .on('data', (data) => {
                 //TODO : Check never closing connection
+                console.log(data);
                 res.write(data);
             })
             .on('close', () => {
