@@ -1,5 +1,5 @@
 # GBFUAPP - Server  
-GBFUAPP (Granblue Fantasy Utility Application) is a project wanting to bring multiples tools for the game [Granblue Fantasy](http://game.granbluefantasy.jp/) and improve player "quality of life".  
+GBFUAPP (Granblue Fantasy Utility Application) is a project that wants to bring multiples tools for the game [Granblue Fantasy](http://game.granbluefantasy.jp/) and improve player "quality of life".  
 Server part of the project. Check this [link](https://github.com/Abikebuk/GBFUAPP-client) for the client part.
 This version only contains a prototype of a "raid finder".
 
