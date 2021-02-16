@@ -1,14 +1,14 @@
-#GBFUAPP - Server 
+#GBFUAPP - Server  
 GBFUAPP (Granblue Fantasy Utility Application) is a project wanting to bring multiples tools for the game Granblue Fantasy.  
 Server part of the project. Check this [link](https://github.com/Abikebuk/GBFUAPP-client) for the client part.
 This version only contains a prototype of a "raid finder".
 
-## Feature
+## Feature  
 * **Raid Finder:** Fetch the "backup request" from player asking for help in the game. It takes advantage of the  in-game function of backup request on Twitter.
     * Real-time gathering of Tweets of players asking for help then process and stream the data.
     * Self-building database and translation ``ja <-> en`` of unregistered raids. Checks information on the [(unofficial) english wiki](https://gbf.wiki/).
     * (On client) Real-time display of selected raids from backup requests.
-##Installation
+##Installation  
 **This project only contains the API that gathers and process data. It is meant to be used with a client which you can find [here](https://github.com/Abikebuk/GBFUAPP-client)**
 
 Use your favorite package manager to install the dependencies such as ``npm`` or ``yarn``. 
@@ -31,7 +31,7 @@ GBFUAPP_TWITTER_CONSUMER_KEY=some_twitter_consummer_key
 GBFUAPP_TWITTER_CONSUMER_KEY_SECRET=some_twitter_consummer_key_secret
 ```
 
-## Usage
+## Usage  
 Build the project with:
 ```shell
 npm run build
@@ -47,11 +47,11 @@ Alternatively, you can use the shortcut that do both of the previous commands:
 npm run start:dev
 ```
 
-## API Endpoints
+## API Endpoints  
 Per default, the following endpoints exist:
 * ``/`` prints that the server has started
 * ``/raids`` returns a list of raids from backup requests in real time
 * ``/raidsData`` returns the data of registered raids (such as, english/japanese name, type, wiki url,...)  
 The route of the endpoints are customizable by editing ``/src/init/appStart.ts``
-## Licence
+## Licence  
 This project is under [MIT](https://choosealicense.com/licenses/mit/) Licence.
