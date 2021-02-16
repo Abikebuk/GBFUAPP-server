@@ -1,4 +1,4 @@
-#GBFUAPP - Server  
+# GBFUAPP - Server  
 GBFUAPP (Granblue Fantasy Utility Application) is a project wanting to bring multiples tools for the game Granblue Fantasy.  
 Server part of the project. Check this [link](https://github.com/Abikebuk/GBFUAPP-client) for the client part.
 This version only contains a prototype of a "raid finder".
@@ -8,7 +8,7 @@ This version only contains a prototype of a "raid finder".
     * Real-time gathering of Tweets of players asking for help then process and stream the data.
     * Self-building database and translation ``ja <-> en`` of unregistered raids. Checks information on the [(unofficial) english wiki](https://gbf.wiki/).
     * (On client) Real-time display of selected raids from backup requests.
-##Installation  
+## Installation  
 **This project only contains the API that gathers and process data. It is meant to be used with a client which you can find [here](https://github.com/Abikebuk/GBFUAPP-client)**
 
 Use your favorite package manager to install the dependencies such as ``npm`` or ``yarn``. 
