@@ -22,7 +22,6 @@ function raids(app: Express, route: string, stream: Readable): number {
         stream
             .on('data', (data) => {
                 //TODO : Check never closing connection
-                console.log(data);
                 res.write(data);
             })
             .on('close', () => {
