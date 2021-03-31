@@ -5,11 +5,11 @@
 import TwitterLite from 'twitter-lite/dist';
 import tweetConvert from './tweetConvert';
 import Tweet from '../model/Tweet';
-import { Readable } from 'stream';
 import RaidFinderResponse from '../model/RaidFinderResponse';
 import parseText from './parseText';
 import Raid from '../model/Raid';
 import RaidList from '../mongoose/RaidList';
+import { Server } from 'socket.io';
 
 /**
  * Class TwitterStreamProxy
@@ -17,22 +17,13 @@ import RaidList from '../mongoose/RaidList';
  */
 class TwitterStreamProxy {
     /**
-     * Readable Stream
-     */
-    readable: Readable;
-
-    /**
      * Constructor
      * @param source, Twitter Stream
      * @param raidList, a RaidList (that contains raids data)
+     * @param httpServer
      */
-    constructor(source: TwitterLite.Stream, raidList: RaidList) {
-        this.readable = new Readable({
-            objectMode: true,
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            read() {},
-        });
-        this.readable.setEncoding('utf-8'); // For special characters
+    constructor(source: TwitterLite.Stream, raidList: RaidList, io: Server) {
+        console.log('constructing proxy...');
         // Fetch the stream
         source.on('data', (tweet: Tweet) => {
             const raid: Raid | null = parseText(tweet.lang, tweet.text);
@@ -41,7 +32,7 @@ class TwitterStreamProxy {
                 raidList.check(raid).then(() => {
                     const res: RaidFinderResponse | null = tweetConvert(tweet, raid);
                     // Check if (!=null), parsing could be done
-                    if (res !== null) this.readable.push(JSON.stringify(res));
+                    if (res !== null) io.emit('raid_backup_request', JSON.stringify(res));
                 });
         });
     }

@@ -8,27 +8,29 @@ import RaidList from '../mongoose/RaidList';
 // Api
 import root from '../api/root';
 import listen from '../api/listen';
-import raids from '../api/raids';
 import raidsData from '../api/raidsData';
+import { Server } from 'socket.io';
 
 /**
  * Start every service of the api
  * @param app
  */
 async function appStart(app: Express): Promise<number> {
+    // Listen
+    const httpServer = listen(app, Number(process.env.GBFUAPP_PORT));
     // Twitter & MongoDB database connection initialization
     const twit = new Twit();
+    // Socket init
+    const io = new Server(httpServer, { cors: { origin: '*' } });
     // eslint-disable-next-line no-unused-vars
     const db = connect();
     const raidList = await new RaidList();
-    console.log(await raidList.get());
+    await raidList.get();
     // API
-    const raidsFinderStream = new TwitterStreamProxy(twit.getRaidStream(), raidList);
-    raids(app, '/raids', raidsFinderStream.readable);
+    const raidsFinderStream = new TwitterStreamProxy(twit.getRaidStream(), raidList, io);
     raidsData(app, '/raidsData');
     root(app, '/');
-    // Listen
-    listen(app, Number(process.env.GBFUAPP_PORT));
+    //test(server);
     return 0;
 }
 

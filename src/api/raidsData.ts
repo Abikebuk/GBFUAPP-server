@@ -11,7 +11,7 @@ import MongoRaid from '../mongoose/model/MongoRaid';
  */
 function raidsData(app: Express, route: string): void {
     let data: Document[] = [];
-    MongoRaid.find((callback, list) => {
+    MongoRaid.find((callback, list: Document[]) => {
         data = list;
     });
     app.get(route, (req, res) => {
